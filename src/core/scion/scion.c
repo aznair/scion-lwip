@@ -49,7 +49,7 @@ err_t
 scion_input(struct pbuf *p, struct netif *inp){
     /* Packet from TCP queue: [from (HostAddr) || raw_spkt] */
     u8_t *spkt_start = p->payload + sizeof(HostAddr);
-    spkt_t *spkt = parse_spkt(spkt_start);
+    spkt_t *spkt = parse_spkt(spkt_start, 0, NULL);
     /* Addresses: */
     /* FIXME(PSz): memset() is required by checksum computed over SVC addr. */
     memset(current_iphdr_src.addr, 0, MAX_ADDR_LEN);
